@@ -98,6 +98,101 @@ button {
 :root {
   --Font-Family-Barlow: "Barlow", sans-serif;
   --Font-Family-Fraunces: "Fraunces", serif;
+
+  --Transition: 0.8s all;
+}
+
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+body {
+  padding: 0 24px;
+}
+
+/* *********************** */
+/* HEADER + NAV */
+/* *********************** */
+
+header {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 24px 40px 24px;
+}
+
+.header-logo {
+  max-width: 163px;
+}
+
+[aria-controls="nav-menu"] {
+  all: unset;
+  display: block;
+
+  position: relative;
+  z-index: 4;
+
+  cursor: pointer;
+}
+
+[aria-controls="nav-menu"] .nav-toggle-line {
+  display: block;
+  width: 25px;
+  height: 3px;
+
+  background: #333d4b;
+  margin-block: 3px;
+  border-radius: 4px;
+
+  transition: transform 0.5s, opacity 0.25s;
+}
+
+[aria-controls="nav-menu"][aria-expanded="true"] .nav-toggle-line:nth-child(1) {
+  transform: translateY(13px) rotate(45deg);
+}
+
+[aria-controls="nav-menu"][aria-expanded="true"] .nav-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+[aria-controls="nav-menu"][aria-expanded="true"] .nav-toggle-line:nth-child(3) {
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+[aria-expanded="false"] + .nav-menu {
+  visibility: hidden;
+  transform: translateX(-100);
+}
+
+.nav-menu {
+  visibility: visible;
+
+  font-weight: 300;
+  font-size: var(--Leader-Nav-FS);
+  line-height: 25px;
+
+  font-family: var(--Font-Family-Josefin);
+  color: var(--Nav-Color);
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14.4px;
+
+  min-height: 100vh;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  z-index: 3;
+
+  padding: 223px 222px 0 24px;
+  background: var(--Nav-Background);
+  box-shadow: -5px 0 11px 0 rgb(0 0 0 / 0.2);
 }
 
 /* *********************** */
@@ -105,11 +200,26 @@ button {
 /* *********************** */
 
 .hero--section {
-  background: url(./);
+  background: url(../assets/home/mobile/image-hero-coffeepress.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  padding: 100px 24px 100px 24px;
+
+  border-radius: 10px;
+
+  margin-bottom: 120px;
+}
+
+.hero--section-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero--heading {
-  font-family: "Fraunces 9pt";
+  font-family: "Fraunces";
   font-style: normal;
   font-weight: 900;
   font-size: 40px;
@@ -118,6 +228,8 @@ button {
   text-align: center;
 
   color: #fefcf7;
+
+  margin-bottom: 24px;
 }
 
 .hero--text {
@@ -133,10 +245,12 @@ button {
 
   mix-blend-mode: normal;
   opacity: 0.8;
+
+  margin-bottom: 39px;
 }
 
-.hero--button {
-  font-family: "Fraunces 9pt";
+.button {
+  font-family: "Fraunces";
   font-style: normal;
   font-weight: 900;
   font-size: 18px;
@@ -152,12 +266,23 @@ button {
   padding: 15px 31px 16px 31px;
 }
 
+.button:is(:hover, :focus-visible) {
+  background: #66d2cf;
+  outline: dashed 2px #66d2cf;
+  outline-offset: 6px;
+  transition: var(--Transition);
+}
+
 /* *********************** */
 /* SECTION - OUR COLLECTION */
 /* *********************** */
 
+.our-collection--section {
+  margin-bottom: 120px;
+}
+
 .our-collection--heading {
-  font-family: "Fraunces 9pt";
+  font-family: "Fraunces";
   font-style: normal;
   font-weight: 900;
   font-size: 40px;
@@ -168,9 +293,223 @@ button {
   color: #83888f;
 }
 
+.our-collection--product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.our-collection--product-image {
+  margin-bottom: 24px;
+}
+
+.our-collection--product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.our-collection--product-subheading {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height, or 133% */
+
+  color: #333d4b;
+
+  margin-bottom: 16px;
+}
+
+.our-collection--product-text {
+  max-width: 32ch;
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  /* or 167% */
+
+  color: #333d4b;
+}
+
 /* *********************** */
-/* RESETS */
+/* SECTION - WHY US */
 /* *********************** */
+
+.why-us--section {
+  position: relative;
+  margin-bottom: 120px;
+}
+
+.why-us--section::before {
+  background-color: #333d4b;
+  border-radius: 10px;
+  content: "";
+  height: 60%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.why-us--section-content-one {
+  padding: 64px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-us--heading {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 28px;
+  /* identical to box height, or 100% */
+  text-align: center;
+
+  color: #fefcf7;
+
+  margin-bottom: 24px;
+}
+
+.why-us--text {
+  max-width: 59ch;
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  /* or 167% */
+  text-align: center;
+
+  color: #fefcf7;
+
+  mix-blend-mode: normal;
+  opacity: 0.8;
+}
+
+.why-us--reason-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin: 0 24px;
+}
+
+.why-us--reason {
+  /* max-width: 279px; */
+  background: #0e8784;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 72px 12px 51px 12px;
+}
+
+.why-us--reason-icon {
+  margin-bottom: 56px;
+}
+
+.why-us--reason-text-content {
+  text-align: center;
+}
+
+.why-us--reason-subheading {
+  font-family: "Fraunces 9pt";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 32px;
+
+  color: #fefcf7;
+
+  margin-bottom: 24px;
+}
+
+.why-us--reason-text {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+
+  color: #fefcf7;
+}
+
+/* *********************** */
+/* SECTION - HOW IT WORKS */
+/* *********************** */
+
+.how-it-works--section {
+  margin-bottom: 120px;
+}
+
+.how-it-works--list {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-bottom: 79px;
+}
+
+.how-it-works--list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  text-align: center;
+}
+
+.how-it-works--heading {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height, or 133% */
+
+  color: #83888f;
+
+  margin-bottom: 80px;
+}
+
+.how-it-works--number {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 72px;
+  /* identical to box height, or 100% */
+
+  color: #fdd6ba;
+}
+
+.how-it-works--subheading {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 32px;
+
+  color: #333d4b;
+}
+
+.how-it-works--text {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+
+  color: #333d4b;
+}
 
 /* *********************** */
 /* FOOTER */
@@ -191,6 +530,8 @@ footer {
 
 .footer--logo {
   margin-bottom: 48.44px;
+  /* align-self: center; */
+  justify-self: center;
 }
 
 .footer--nav-list {
@@ -219,4 +560,213 @@ footer {
   justify-content: center;
 
   gap: 24px;
+}
+
+/* *********************** */
+/* MEDIA QUERiIES */
+/* *********************** */
+
+@media (min-width: 600px) {
+  /* HERO - SECTION */
+  .hero--section {
+    background: url(../assets/home/tablet/image-hero-coffeepress.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    padding: 104px 24px 104px 58px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 120px;
+  }
+
+  .hero--section-inner {
+    max-width: 398px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero--heading {
+    text-align: start;
+  }
+
+  .hero--text {
+    text-align: start;
+  }
+
+  /* SECTION - OUR COLLECTION */
+
+  .our-collection--heading {
+    font-size: 96px;
+    line-height: 72px;
+  }
+
+  .our-collection--product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    text-align: start;
+  }
+
+  /* SECTION - WHY US */
+
+  .why-us--reason {
+    /* max-width: 279px; */
+    background: #0e8784;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 41px 48px 41px 70px;
+  }
+
+  .why-us--reason-icon {
+    margin-bottom: 0;
+    margin-right: 55px;
+  }
+
+  .why-us--reason-text-content {
+    text-align: start;
+  }
+
+  /* SECTION - HOW IT WORKS */
+
+  .how-it-works--heading {
+    font-family: "Fraunces";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 32px;
+    /* identical to box height, or 133% */
+
+    color: #83888f;
+
+    margin-bottom: 119px;
+  }
+
+  .how-it-works--list {
+    display: flex;
+    flex-direction: row;
+    gap: 56px;
+    margin-bottom: 79px;
+  }
+
+  .how-it-works--list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    text-align: start;
+    position: relative;
+  }
+
+  .how-it-works--list-item::before {
+    background-color: #ffffff;
+    border: 2px solid #0e8784;
+    border-radius: 50%;
+    /* display: none; */
+    width: 31px;
+    height: 31px;
+    /* margin-bottom: 3rem; */
+    position: absolute;
+
+    z-index: 1;
+    content: "";
+
+    top: -80px;
+  }
+
+  .list-item--before::after {
+    background-color: #fdd6ba;
+    content: "";
+    height: 2px;
+    left: 20px;
+    position: absolute;
+    top: -65px;
+    width: 110%;
+  }
+
+  /* FOOTER */
+
+  .footer--nav-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1000px) {
+  .hero--section {
+    background: url(../assets/home/desktop/image-hero-coffeepress.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    padding: 117px 24px 116px 85px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 120px;
+  }
+
+  /* SECTION - OUR COLLECTION */
+
+  .our-collection--product-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .our-collection--product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  /* SECTION - WHY US */
+
+  .why-us--reason-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+    margin: 0 85px;
+  }
+
+  .why-us--reason {
+    /* max-width: 279px; */
+    background: #0e8784;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 72px 48px 48px 47px;
+  }
+
+  .why-us--reason-icon {
+    margin-bottom: 56px;
+    margin-right: 0;
+  }
+
+  .why-us--reason-text-content {
+    text-align: center;
+  }
 }
