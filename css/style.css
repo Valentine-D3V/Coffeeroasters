@@ -219,6 +219,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  text-align: center;
 }
 
 .hero--heading {
@@ -228,7 +230,6 @@ header {
   font-size: 40px;
   line-height: 40px;
   /* or 100% */
-  text-align: center;
 
   color: #fefcf7;
 
@@ -242,7 +243,6 @@ header {
   font-size: 15px;
   line-height: 25px;
   /* or 167% */
-  text-align: center;
 
   color: #fefcf7;
 
@@ -638,26 +638,23 @@ footer {
 
     border-radius: 10px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
     margin-bottom: 120px;
   }
 
   .hero--section-inner {
-    max-width: 398px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    text-align: start;
   }
 
   .hero--heading {
-    text-align: start;
+    max-width: 10ch;
   }
 
   .hero--text {
-    text-align: start;
+    max-width: 44ch;
   }
 
   /* SECTION - OUR COLLECTION */
@@ -779,11 +776,12 @@ footer {
 
     border-radius: 10px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
     margin-bottom: 120px;
+  }
+
+  .hero--heading {
+    font-size: 72px;
+    line-height: 72px;
   }
 
   /* SECTION - OUR COLLECTION */
