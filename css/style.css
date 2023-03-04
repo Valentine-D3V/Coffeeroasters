@@ -119,6 +119,7 @@ header {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 32px 24px 40px 24px;
 }
@@ -169,13 +170,15 @@ header {
 .nav-menu {
   visibility: visible;
 
-  font-weight: 300;
-  font-size: var(--Leader-Nav-FS);
-  line-height: 25px;
+  font-family: "Fraunces 9pt";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height, or 133% */
+  text-align: center;
 
-  font-family: var(--Font-Family-Josefin);
-  color: var(--Nav-Color);
-  text-transform: uppercase;
+  color: #333d4b;
 
   display: flex;
   flex-direction: column;
@@ -567,6 +570,63 @@ footer {
 /* *********************** */
 
 @media (min-width: 600px) {
+  header {
+    padding: 40px 40px 53px 39px;
+  }
+
+  .header-logo {
+    max-width: 236px;
+  }
+
+  .navbar {
+    position: static;
+    inset-block-start: 1rem;
+    inset-inline-end: 1rem;
+  }
+
+  [aria-controls="nav-menu"] {
+    all: unset;
+    display: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  [aria-expanded="false"] + .nav-menu {
+    transform: none;
+    visibility: visible;
+  }
+
+  .nav-menu {
+    visibility: visible;
+
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+    letter-spacing: 0.923077px;
+    text-transform: uppercase;
+
+    color: #83888f;
+
+    display: flex;
+    flex-direction: row;
+    gap: 43px;
+
+    min-height: auto;
+    width: 100%;
+
+    padding: 0;
+
+    position: static;
+    top: 0;
+    right: 0;
+
+    background: transparent;
+    box-shadow: none;
+  }
+
   /* HERO - SECTION */
   .hero--section {
     background: url(../assets/home/tablet/image-hero-coffeepress.jpg);
@@ -705,6 +765,10 @@ footer {
 }
 
 @media (min-width: 1000px) {
+  header {
+    padding: 50px 80px 48px 80px;
+  }
+
   .hero--section {
     background: url(../assets/home/desktop/image-hero-coffeepress.jpg);
     background-repeat: no-repeat;
